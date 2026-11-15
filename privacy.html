@@ -41,7 +41,7 @@
 <table>
   <tr><th>Data</th><th>Goes to</th><th>When</th></tr>
   <tr><td>Agent tabs, approvals, messages, changes, to-dos, usage figures</td><td>Between your computer and your own iPhone, over your Tailscale network (encrypted end to end)</td><td>Only if you turn on Phone remote</td></tr>
-  <tr><td>Notification text (project name, what the agent asks)</td><td>Apple Push Notification service, to your iPhone</td><td>Only if notifications are set up and allowed</td></tr>
+  <tr><td>Notification text (project name, what the agent asks), encrypted on your computer with a key only your iPhone has</td><td>The Pilothouse push relay (a Cloudflare Worker that cannot read it and keeps no logs), then Apple Push Notification service, to your iPhone</td><td>Only if you allow notifications on the iPhone</td></tr>
   <tr><td>An update check (your IP address is visible to GitHub)</td><td>GitHub Releases</td><td>When the desktop app checks for updates</td></tr>
   <tr><td>A one-time download request</td><td>Hugging Face</td><td>Only if you turn on voice, to fetch the speech model</td></tr>
 </table>
