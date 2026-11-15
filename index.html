@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Pilothouse — one window for every coding agent</title>
-<meta name="description" content="One cockpit for terminal AI agents (Claude Code, Codex, Antigravity, Gemini CLI, opencode) on macOS, Windows and Linux: tabbed terminals, an Inbox for everything they ask, hand-off between agents, history and on-device voice.">
+<meta name="description" content="One cockpit for terminal AI agents (Claude Code, Codex, Antigravity, Gemini CLI, opencode) on macOS, Windows and Linux: tabbed terminals, an Inbox for everything they ask, hand-off between agents, on-device voice, and an iPhone app to approve from anywhere. Free, open source, collects nothing.">
 <meta property="og:title" content="Pilothouse">
-<meta property="og:description" content="One window for every coding agent: tabbed terminals, an Inbox, hand-off between agents, history and on-device voice. macOS, Windows and Linux.">
+<meta property="og:description" content="One window for every coding agent, and your phone: tabbed terminals, an Inbox, hand-off between agents, on-device voice, approvals from your iPhone. Free and open source.">
 <meta property="og:image" content="og.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="logo.svg" type="image/svg+xml">
@@ -92,6 +92,25 @@
   .copy:hover { color: var(--ink); }
   .note { font-size: 13px; color: var(--muted); margin-top: 12px; }
 
+  /* Phone mock */
+  .phone { width: 280px; margin: 0 auto; border: 1px solid var(--line); border-radius: 38px; background: #050608; padding: 14px; box-shadow: 0 40px 120px -40px rgba(200,255,46,.18); }
+  .screen { border-radius: 26px; background: var(--bg); padding: 18px 14px; min-height: 470px; font-size: 13px; }
+  .screen h4 { margin: 4px 0 14px; font-size: 18px; text-align: center; }
+  .screen .lbl { color: var(--muted); font-size: 11.5px; margin: 12px 4px 6px; text-transform: uppercase; letter-spacing: .04em; }
+  .row { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; margin-bottom: 6px; }
+  .row b { font-weight: 600; }
+  .row .ag { color: var(--accent); font-size: 11px; font-weight: 600; }
+  .row .tx { color: var(--ink2); font-size: 11.5px; margin-top: 2px; }
+  .row .st { font-size: 11px; margin-left: 6px; }
+  .choice { display: block; border-radius: 9px; padding: 8px 10px; margin-top: 6px; font-size: 12px; background: #1a2030; }
+  .choice.yes { background: var(--accent); color: var(--on-accent); font-weight: 600; }
+  .bar { height: 5px; border-radius: 3px; background: #1a2030; margin-top: 5px; overflow: hidden; }
+  .bar i { display: block; height: 100%; background: var(--accent); }
+  .checks { list-style: none; padding: 0; margin: 18px 0 0; display: grid; gap: 10px; }
+  .checks li { padding-left: 26px; position: relative; color: var(--ink2); }
+  .checks li::before { content: "✓"; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+  .checks b { color: var(--ink); font-weight: 600; }
+
   footer { border-top: 1px solid var(--line); padding: 32px 0 48px; color: var(--muted); font-size: 14px; }
   footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
   footer a { color: var(--ink2); text-decoration: none; margin-left: 18px; }
@@ -130,7 +149,9 @@
     <a class="brand" href="#"><img src="logo.svg" alt="">Pilothouse</a>
     <div class="links">
       <a href="#features" class="hide-sm">Features</a>
+      <a href="#phone" class="hide-sm">Phone</a>
       <a href="#voice" class="hide-sm">Voice</a>
+      <a href="#privacy" class="hide-sm">Privacy</a>
       <a href="#install">Install</a>
       <a href="https://github.com/aemresrbyk/pilothouse" class="released">GitHub</a>
     </div>
@@ -141,7 +162,7 @@
   <div class="wrap">
     <div class="eyebrow">For Claude Code, Codex, Antigravity, Gemini CLI &amp; opencode</div>
     <h1>One window for<br><span>every coding agent</span></h1>
-    <p class="lede">Pilothouse keeps all your agent projects in tabs, puts everything they ask you in one Inbox, and when one runs out of its plan, hands the work to another agent right where it stopped.</p>
+    <p class="lede">Pilothouse keeps all your agent projects in tabs, puts everything they ask you in one Inbox, hands the work to another agent when one runs out of its plan, and lets you answer them from your iPhone.</p>
     <div class="cta">
       <a class="btn primary released" href="https://github.com/aemresrbyk/pilothouse/releases/latest">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.6c0-2.7 2.2-4 2.3-4.1-1.3-1.9-3.2-2.1-3.9-2.1-1.7-.2-3.2 1-4.1 1-.8 0-2.1-1-3.5-.9-1.8 0-3.5 1.1-4.4 2.7-1.9 3.3-.5 8.2 1.4 10.9.9 1.3 2 2.8 3.4 2.7 1.4-.1 1.9-.9 3.5-.9s2.1.9 3.5.9c1.5 0 2.4-1.3 3.3-2.7 1-1.5 1.5-3 1.5-3.1-.1 0-2.9-1.1-3-4.4zM13.7 4.5c.7-.9 1.2-2.1 1.1-3.3-1 0-2.3.7-3 1.6-.7.8-1.3 2-1.1 3.2 1.1.1 2.3-.6 3-1.5z"/></svg>
@@ -152,7 +173,7 @@
       <span class="btn primary soon">Coming soon</span>
       <a class="btn" href="#install">Homebrew &amp; script</a>
     </div>
-    <p class="meta">Free &amp; open source (MIT) · macOS 12+ (Apple Silicon &amp; Intel, signed &amp; notarized) · Windows x64 · Linux x64 (AppImage, .deb)</p>
+    <p class="meta">Free &amp; open source (MIT) · No account, collects nothing · macOS 12+ (Apple Silicon &amp; Intel, signed &amp; notarized) · Windows x64 · Linux x64 (AppImage, .deb)</p>
 
     <div class="window" role="img" aria-label="Illustration of the Pilothouse window with three project tabs and their status dots">
       <div class="titlebar">
@@ -221,6 +242,45 @@
   </div>
 </section>
 
+<section id="phone">
+  <div class="wrap split">
+    <div>
+      <h2>Your agents,<br>in your pocket.</h2>
+      <p class="sub" style="margin-bottom: 0">The Pilothouse iPhone app talks straight to your computer over your own Tailscale network. No account, no server of ours in between.</p>
+      <ul class="checks">
+        <li><b>Every agent, one list.</b> What needs you is on top, with the agent each tab runs and its last message.</li>
+        <li><b>Approve safely.</b> The agent’s own options as buttons. Risky commands (rm -rf, force-push, deploy, sudo) take two taps and Face ID; a tap on a prompt that changed meanwhile is refused.</li>
+        <li><b>Usage left.</b> Claude Code’s 5-hour and weekly limits and Codex’s, with reset times.</li>
+        <li><b>Changes and to-dos.</b> A tab’s uncommitted diff; a project’s TODOs and open checkboxes.</li>
+        <li><b>Talk instead of typing</b>, recognised on the iPhone. <b>Widgets</b> on the home and lock screen.</li>
+        <li><b>Auto-approve rules</b> for the commands you always allow. Never for risky ones.</li>
+      </ul>
+    </div>
+    <div class="phone" role="img" aria-label="The Pilothouse iPhone app: one agent waiting for approval, two working, and usage left">
+      <div class="screen">
+        <h4>Pilothouse</h4>
+        <div class="lbl">Needs you</div>
+        <div class="row">
+          <b>web-app</b><span class="st" style="color: var(--amber)">needs you</span>
+          <div class="ag">Codex</div>
+          <div class="tx mono">Bash(npm test) · Do you want to proceed?</div>
+          <span class="choice yes">1. Yes</span>
+          <span class="choice">2. No, tell it what to do</span>
+        </div>
+        <div class="lbl">Agents</div>
+        <div class="row"><b>api-server</b><span class="st" style="color: var(--accent)">working</span><div class="ag">Claude Code</div></div>
+        <div class="row"><b>docs</b><span class="st" style="color: var(--muted)">idle</span><div class="ag">Gemini CLI</div></div>
+        <div class="lbl">Usage left</div>
+        <div class="row">
+          <b>Claude Code</b>
+          <div class="tx">71% left · 5 hours</div><div class="bar"><i style="width: 71%"></i></div>
+          <div class="tx">94% left · week</div><div class="bar"><i style="width: 94%"></i></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="voice" style="background: var(--bg2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);">
   <div class="wrap split">
     <div>
@@ -238,6 +298,18 @@
       <div style="color: var(--amber)">● web-app wants to run <code>npm test</code>. Allow?</div>
       <div style="color: var(--muted)">🎙 “Yes.”</div>
       <div style="color: var(--green)">✓ 2 failing tests fixed. Read the summary?</div>
+    </div>
+  </div>
+</section>
+
+<section id="privacy">
+  <div class="wrap">
+    <h2>Free. Open source. Collects nothing.</h2>
+    <p class="sub">No subscription, no account, no analytics, no telemetry. Your code, prompts and terminal output stay on your computer and your own phone. Your agents talk to their own providers as they always do; Pilothouse never sits in between or touches their logins.</p>
+    <div class="grid">
+      <div class="card"><h3>On your machine</h3><p>Voice is transcribed locally. Usage limits are read from files the agent CLIs already keep.</p></div>
+      <div class="card"><h3>Between your devices</h3><p>The phone reaches your computer only over your own Tailscale network, encrypted end to end. Each phone has its own key you can remove any time.</p></div>
+      <div class="card"><h3>Read the code</h3><p>MIT licensed, every line on GitHub. <a href="privacy.html" style="color: var(--accent)">Privacy policy</a>.</p></div>
     </div>
   </div>
 </section>
@@ -260,6 +332,8 @@
     <span>
       <a href="https://github.com/aemresrbyk/pilothouse" class="released">GitHub</a>
       <a href="https://www.producthunt.com/@aemresrbyk">Product Hunt</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="support.html">Support</a>
       <a href="mailto:aemresrbyk@gmail.com">Contact: aemresrbyk@gmail.com</a>
     </span>
   </div>
