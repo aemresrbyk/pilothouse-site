@@ -168,7 +168,7 @@
   <div class="wrap">
     <div class="eyebrow">For Claude Code, Codex, Antigravity, Gemini CLI &amp; opencode</div>
     <h1>One window for<br><span>every coding agent</span></h1>
-    <p class="lede">Pilothouse keeps all your agent projects in tabs, puts everything they ask you in one Inbox, hands the work to another agent when one runs out of its plan, and lets you answer them from your iPhone.</p>
+    <p class="lede">Pilothouse keeps all your agent projects in tabs, puts everything they ask you in one Inbox, hands the work to another agent when one runs out of its plan, and lets you answer them from your phone or any browser.</p>
     <div class="cta">
       <a class="btn primary released" href="https://github.com/aemresrbyk/pilothouse/releases/latest">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.6c0-2.7 2.2-4 2.3-4.1-1.3-1.9-3.2-2.1-3.9-2.1-1.7-.2-3.2 1-4.1 1-.8 0-2.1-1-3.5-.9-1.8 0-3.5 1.1-4.4 2.7-1.9 3.3-.5 8.2 1.4 10.9.9 1.3 2 2.8 3.4 2.7 1.4-.1 1.9-.9 3.5-.9s2.1.9 3.5.9c1.5 0 2.4-1.3 3.3-2.7 1-1.5 1.5-3 1.5-3.1-.1 0-2.9-1.1-3-4.4zM13.7 4.5c.7-.9 1.2-2.1 1.1-3.3-1 0-2.3.7-3 1.6-.7.8-1.3 2-1.1 3.2 1.1.1 2.3-.6 3-1.5z"/></svg>
@@ -217,7 +217,7 @@
       <div class="card">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 9h18M8 5v4"/></svg></div>
         <h3>Tabbed, real terminals</h3>
-        <p>One login shell per tab (node-pty + xterm.js), side by side in a grid if you like. A worktree tab gives a second agent its own git branch, so two never edit the same files.</p>
+        <p>One login shell per tab, side by side in a grid if you like. Line tasks up in a queue: the next one goes in when the agent finishes. A worktree tab gives a second agent its own git branch.</p>
       </div>
       <div class="card">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M8.3 11l7.4-4M8.3 13l7.4 4"/></svg></div>
@@ -251,16 +251,19 @@
 <section id="phone">
   <div class="wrap split">
     <div>
-      <h2>Your agents,<br>in your pocket.</h2>
-      <p class="sub" style="margin-bottom: 0">The Pilothouse iPhone app talks straight to your computer over your own Tailscale network. No account, no server of ours in between.</p>
+      <h2>Your agents,<br>from anywhere.</h2>
+      <p class="sub" style="margin-bottom: 0">Answer them from the iPhone app or any browser at <a href="app/" style="color: var(--accent)">usepilothouse.com/app</a>. Scan one QR code in Pilothouse: no account, no VPN to set up, end-to-end encrypted. (Already on Tailscale? That works too.)</p>
       <ul class="checks">
-        <li><b>Every agent, one list.</b> What needs you is on top, with the agent each tab runs and its last message.</li>
+        <li><b>Every agent, one list.</b> What needs you is on top, across all your computers and servers.</li>
+        <li><b>The live terminal</b>, exactly as on your desktop, with the keys an agent needs (Esc, arrows, Tab, Ctrl+C).</li>
         <li><b>Approve safely.</b> The agent’s own options as buttons. Risky commands (rm -rf, force-push, deploy, sudo) take two taps and Face ID; a tap on a prompt that changed meanwhile is refused.</li>
         <li><b>Usage.</b> How much of Claude Code’s 5-hour and weekly limits (and Codex’s) you have used, with reset times. The bar fills as you use it up.</li>
         <li><b>Changes and to-dos.</b> A tab’s uncommitted diff; a project’s TODOs and open checkboxes.</li>
         <li><b>Talk instead of typing</b>, recognised on the iPhone. <b>Widgets</b> on the home and lock screen.</li>
         <li><b>Auto-approve rules</b> for the commands you always allow. Never for risky ones.</li>
+        <li><b>View-only links</b> to let someone watch, and a <b>server mode</b> for agents on a Linux box or VPS.</li>
       </ul>
+      <a class="btn primary" href="app/" style="margin-top: 18px; display: inline-flex">Open the web app</a>
     </div>
     <div class="phone" role="img" aria-label="The Pilothouse iPhone app: one agent waiting for approval, two working, and plan usage">
       <div class="screen">
@@ -291,12 +294,13 @@
   <div class="wrap split">
     <div>
       <h2>Talk to your agent.<br>Nothing leaves your computer.</h2>
-      <p class="sub" style="margin-bottom: 0">Press ⌘⇧Space (Ctrl+Shift+Space on Windows and Linux) anywhere, or say “Hey Pilothouse”, and speak. Whisper large-v3-turbo transcribes it on your computer and types it into the active tab. Conversation mode reads the answer back, asks you to repeat words it wasn't sure about, and lets you approve with “yes” or “no”.</p>
+      <p class="sub" style="margin-bottom: 0">Press ⌘⇧Space (Ctrl+Shift+Space on Windows and Linux) anywhere, or say “Hey Pilothouse”, and speak. Whisper large-v3-turbo transcribes it on your computer and types it into the active tab. Conversation mode reads the answer back, asks you to repeat words it wasn't sure about, and lets you approve with “yes” or “no”. Brainstorm mode (the light bulb) talks an idea through with your agent, then has it write the plan to SPEC.md.</p>
       <div class="pill-list">
         <span class="pill">On-device Whisper</span>
         <span class="pill">Custom wake word</span>
         <span class="pill">~100 languages</span>
         <span class="pill">Say “stop” to cancel</span>
+        <span class="pill">Brainstorm → SPEC.md</span>
       </div>
     </div>
     <div class="card mono" style="font-size: 13.5px; line-height: 1.9">
@@ -311,10 +315,10 @@
 <section id="privacy">
   <div class="wrap">
     <h2>Free. Open source. Collects nothing.</h2>
-    <p class="sub">No subscription, no account, no analytics, no telemetry. Your code, prompts and terminal output stay on your computer and your own phone. Your agents talk to their own providers as they always do; Pilothouse never sits in between or touches their logins.</p>
+    <p class="sub">No subscription, no account, no analytics, no telemetry. Your code, prompts and terminal output stay on your computer and the devices you paired. Your agents talk to their own providers as they always do; Pilothouse never sits in between or touches their logins.</p>
     <div class="grid">
       <div class="card"><h3>On your machine</h3><p>Voice is transcribed locally. Usage limits are read from files the agent CLIs already keep.</p></div>
-      <div class="card"><h3>Between your devices</h3><p>The phone reaches your computer only over your own Tailscale network, encrypted end to end. Each phone has its own key you can remove any time.</p></div>
+      <div class="card"><h3>Between your devices</h3><p>End-to-end encrypted with keys only your computer and your paired devices hold. The relay in between only passes sealed messages and keeps nothing. Each device has its own key you can remove any time.</p></div>
       <div class="card"><h3>Read the code</h3><p>MIT licensed, every line on GitHub. <a href="privacy.html" style="color: var(--accent)">Privacy policy</a>.</p></div>
     </div>
   </div>
