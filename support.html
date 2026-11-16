@@ -30,26 +30,36 @@
 <main>
 <a class="back" href="./"><img src="logo.svg" alt="">Pilothouse</a>
 <h1>Support</h1>
-<div class="date">Pilothouse desktop app and iPhone app</div>
+<div class="date">Pilothouse desktop app, web app, server and iPhone app</div>
 
-<h2>Connect your iPhone</h2>
+<h2>Use Pilothouse from your phone or another computer</h2>
 <ol>
-  <li>Install <a href="https://tailscale.com/download">Tailscale</a> on your computer and your iPhone and sign in to the same account (free for personal use).</li>
-  <li>On the computer: Pilothouse → Settings → <strong>Phone remote</strong>. A QR code appears.</li>
-  <li>In the iPhone app, tap <strong>Scan QR code</strong>.</li>
+  <li>On the computer: Pilothouse → Settings → <strong>Remote control</strong>. Turn it on; a QR code appears.</li>
+  <li>Scan it with your phone’s camera (opens <a href="app/">usepilothouse.com/app</a>), or with the Pilothouse iPhone app. On another computer, click <strong>Open in browser</strong> or <strong>Copy link</strong> and open it there.</li>
+  <li>That device is paired. The code works once and expires after 10 minutes; Settings shows a fresh one.</li>
 </ol>
+<p>No account and no Tailscale needed: the connection goes through the Pilothouse relay, end-to-end encrypted. If you use Tailscale, the iPhone app can pair over it instead (the <strong>iPhone app</strong> tab in Settings).</p>
 
-<h2>“Cannot reach your computer”</h2>
+<h2>“Your computer is offline” / “Cannot reach your computer”</h2>
 <ul>
-  <li>The computer must be awake with Pilothouse open.</li>
-  <li>Tailscale must be connected on both devices (the VPN switch on the iPhone).</li>
-  <li>Still stuck? Turn Phone remote off and on in Settings.</li>
+  <li>The computer must be awake, with Pilothouse open and Remote control on. Settings shows “Reachable from the web” when the relay connection is up.</li>
+  <li>Over Tailscale: Tailscale must be connected on both devices.</li>
+  <li>Still stuck? Turn Remote control off and on in Settings.</li>
 </ul>
 
-<h2>Remove a phone</h2>
-<p>Pilothouse → Settings → Phone remote → Paired devices → <strong>Remove</strong>. Or, on the iPhone: Settings → Unpair this iPhone.</p>
+<h2>Several computers</h2>
+<p>Scan the QR of each computer with the same browser: the web app shows all their agents in one list, labelled by computer. <strong>Forget</strong> removes one.</p>
 
-<h2>Usage left is empty for Claude Code</h2>
+<h2>Share a view-only link</h2>
+<p>Settings → Remote control → <strong>Share view-only link</strong>. Whoever opens it can watch your agents but cannot type, approve or open anything. It works once, for 10 minutes; remove them under Paired devices.</p>
+
+<h2>Remove a device</h2>
+<p>Pilothouse → Settings → Remote control → Paired devices → <strong>Remove</strong>. Or: in the web app, <strong>Forget</strong>; on the iPhone, Settings → Unpair this iPhone.</p>
+
+<h2>Run agents on a server</h2>
+<p>Pilothouse server runs agents on a Linux box, a VPS or a Mac mini without a window; you pair and answer the same way. See <a href="https://github.com/aemresrbyk/pilothouse/tree/main/server">server/README</a>.</p>
+
+<h2>Usage is empty for Claude Code</h2>
 <p>It appears after a Claude tab opened from Pilothouse has run once. If you set your own Claude Code status line, Pilothouse leaves it alone and can’t show Claude’s limits.</p>
 
 <h2>Report a problem or ask a question</h2>

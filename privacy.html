@@ -30,27 +30,29 @@
 <main>
 <a class="back" href="./"><img src="logo.svg" alt="">Pilothouse</a>
 <h1>Privacy policy</h1>
-<div class="date">Last updated: 15 November 2026 · Applies to the Pilothouse desktop app and the Pilothouse iPhone app</div>
+<div class="date">Last updated: 16 November 2026 · Applies to the Pilothouse desktop app, the web app at usepilothouse.com/app, Pilothouse server and the Pilothouse iPhone app</div>
 
 <div class="box"><p><strong>In short:</strong> Pilothouse collects nothing. There is no account, no analytics, no telemetry, no advertising and no crash reporting. We, the makers, never receive your code, prompts, terminal output, voice or any information about you.</p></div>
 
 <h2>What stays on your devices</h2>
 <p>Your projects, terminal output, agent conversations, settings, voice recordings and transcripts stay on your computer. Voice is transcribed on your computer (desktop) or on your iPhone (iPhone app, using Apple’s on-device speech recognition where your language supports it; otherwise Apple’s speech service handles it under Apple’s privacy policy).</p>
-<p>The iPhone app stores only the address of your computer and its own access key, in the iPhone’s keychain.</p>
+<p>The iPhone app stores only how to reach your computer and its own access keys, in the iPhone’s keychain. The web app stores the computers you paired and their keys in your browser’s local storage; “Forget” removes them.</p>
 
 <h2>What travels, and where</h2>
 <table>
   <tr><th>Data</th><th>Goes to</th><th>When</th></tr>
-  <tr><td>Agent tabs, approvals, messages, changes, to-dos, usage figures</td><td>Between your computer and your own iPhone, over your Tailscale network (encrypted end to end)</td><td>Only if you turn on Phone remote</td></tr>
+  <tr><td>Agent tabs, the live terminal, approvals, messages, changes, to-dos, usage figures</td><td>Between your computer and the phones and browsers you paired: either over your Tailscale network, or through the Pilothouse relay (a Cloudflare Worker). Through the relay every message is sealed with AES-256-GCM using keys that exist only on your computer and the paired device; the relay passes the sealed messages along and cannot read or change them. It stores nothing and keeps no logs. Cloudflare, which runs it, can see IP addresses and the size and timing of messages.</td><td>Only if you turn on Remote control</td></tr>
   <tr><td>Notification text (project name, what the agent asks), encrypted on your computer with a key only your iPhone has</td><td>The Pilothouse push relay (a Cloudflare Worker that cannot read it and keeps no logs), then Apple Push Notification service, to your iPhone</td><td>Only if you allow notifications on the iPhone</td></tr>
+  <tr><td>Browser notifications (project name, what the agent asks), encrypted by your computer for that browser</td><td>Your browser’s push service (Google, Mozilla, Apple or Microsoft, depending on the browser), which cannot read them</td><td>Only if you click “Notify me” in the web app</td></tr>
+  <tr><td>Two numbers: how many agents need you and how many are working (no names)</td><td>The Pilothouse relay, then Apple, to the Live Activity on your iPhone’s lock screen. The system draws it, so these two numbers cannot be encrypted.</td><td>Only while a Live Activity is running on your iPhone</td></tr>
   <tr><td>An update check (your IP address is visible to GitHub)</td><td>GitHub Releases</td><td>When the desktop app checks for updates</td></tr>
   <tr><td>A one-time download request</td><td>Hugging Face</td><td>Only if you turn on voice, to fetch the speech model</td></tr>
 </table>
 <p>Your coding agents (Claude Code, Codex, Gemini CLI and others) keep talking to their own providers exactly as they do without Pilothouse, under those providers’ policies. Pilothouse does not sit between them and does not read or use their login tokens.</p>
-<p>Tailscale, Apple and GitHub are independent services with their own privacy policies.</p>
+<p>Tailscale, Cloudflare, Apple, the browser push services and GitHub are independent services with their own privacy policies.</p>
 
 <h2>On your computer</h2>
-<p>Pilothouse keeps a log of actions taken from your phone in <code>~/.pilothouse/remote-audit.jsonl</code>, on your computer only, so you can see what was approved and when. You can delete it at any time.</p>
+<p>Pilothouse keeps a log of actions taken from your phone or browser in <code>~/.pilothouse/remote-audit.jsonl</code>, on your computer only, so you can see what was approved and when. You can delete it at any time.</p>
 
 <h2>Children</h2>
 <p>Pilothouse is a developer tool and is not directed at children.</p>
