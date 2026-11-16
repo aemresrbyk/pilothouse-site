@@ -65,6 +65,7 @@
   var token = (function () { try { return localStorage.getItem(KEY); } catch (e) { return null; } })();
   // The QR carries a pairing code; trade it once for this browser's own token, then drop it from the address bar.
   var pair = /[#&]p=([0-9a-f]+)/.exec(location.hash);
+  var relayLink = /[#&]r=([0-9a-f]{32})/.exec(location.hash);
   history.replaceState(null, '', location.pathname);
   var msg = document.getElementById('msg'), list = document.getElementById('list');
   var armed = {}; // session id -> choice key armed for a risky approval
@@ -303,7 +304,6 @@
     setInterval(load, 2000);
   }
   // A fresh QR link always pairs, even over an old token (that one may have been revoked or be from another computer).
-  var relayLink = /[#&]r=([0-9a-f]{32})/.exec(location.hash);
   if (relayMode && relayLink && pair) {
     rcfg = { room: relayLink[1], pair: pair[1] };
     msg.textContent = 'Pairing…';
