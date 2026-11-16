@@ -290,7 +290,7 @@
     }));
   }
   function load() {
-    if (relayMode) setup.hidden = comps.length > 0;
+    if (relayMode) { setup.hidden = comps.length > 0; if (!comps.length) { showComputers([]); list.replaceChildren(); plist.replaceChildren(); ptitle.hidden = true; notifyBtn.hidden = true; } }
     if (relayMode ? !comps.length : !token) { msg.textContent = relayMode ? '' : 'Open the link from Pilothouse → Settings → Remote control on this phone.'; return; }
     // Re-rendering would wipe what the user is typing.
     var tag = document.activeElement && document.activeElement.tagName;
