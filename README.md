@@ -1,5 +1,5 @@
 # pilothouse-site
 
-Static website, served by GitHub Pages from `main` (root).
+Website for [Pilothouse](https://github.com/aemresrbyk/pilothouse), live at **https://usepilothouse.com**.
 
-Custom domain: add a `CNAME` file with the domain (e.g. `www.example.com`) and point DNS at GitHub Pages — see the steps in the Notion page "Web siteleri — kurulum".
+Static HTML served by GitHub Pages from `main` (root). DNS is on Cloudflare (DNS only, not proxied) pointing at GitHub Pages; the `CNAME` file holds the domain.
