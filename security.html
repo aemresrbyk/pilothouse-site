@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Security · Pilothouse</title>
+<meta name="description" content="How Pilothouse keeps remote control of your coding agents safe: what the relay can and cannot see, pairing, risky-command checks and the audit log.">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<link rel="canonical" href="https://usepilothouse.com/security.html">
+<style>
+  :root { --bg: #0B0D10; --card: #111418; --line: #1F252C; --ink: #E8EDF0; --ink2: #A7B0B8; --muted: #5F6973; --accent: #C8FF2E; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.7 Inter, system-ui, -apple-system, Segoe UI, sans-serif; -webkit-font-smoothing: antialiased; }
+  main { max-width: 720px; margin: 0 auto; padding: 48px 20px 80px; }
+  a { color: var(--accent); }
+  .back { display: inline-flex; align-items: center; gap: 8px; color: var(--ink2); text-decoration: none; font-weight: 600; margin-bottom: 32px; }
+  .back img { width: 26px; height: 26px; }
+  h1 { font-size: 34px; letter-spacing: -0.02em; margin: 0 0 6px; }
+  h2 { font-size: 20px; margin: 36px 0 8px; }
+  p, li { color: var(--ink2); }
+  .date { color: var(--muted); font-size: 14px; margin-bottom: 28px; }
+  table { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 15px; }
+  th, td { text-align: left; padding: 10px 8px; border-bottom: 1px solid var(--line); vertical-align: top; color: var(--ink2); }
+  th { color: var(--ink); font-weight: 600; }
+  .box { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; }
+  .box p { margin: 0; color: var(--ink); }
+</style>
+</head>
+<body>
+<main>
+<a class="back" href="./"><img src="logo.svg" alt="">Pilothouse</a>
+<h1>Security</h1>
+<div class="date">Last updated: 17 November 2026 · How remote control works, what can reach your computer, and what we can never see</div>
+
+<div class="box"><p><strong>In short:</strong> remote control is off until you turn it on. Only devices you pair with a one-time QR code can reach your computer. Through the relay, every message is end-to-end encrypted, so neither the relay nor we can read or change it. Risky commands need an extra confirmation, a prompt that changed is never approved by an old tap, and every remote action is logged on your computer.</p></div>
+
+<h2>What can reach your computer</h2>
+<ul>
+<li><strong>Nothing, by default.</strong> Remote control and the local control API are both off until you switch them on in Settings.</li>
+<li><strong>Through the relay</strong> (relay.usepilothouse.com, a Cloudflare Worker): your computer opens an outgoing connection. No port is opened on your network.</li>
+<li><strong>Over Tailscale</strong>: the computer listens only on its Tailscale address, never on your Wi-Fi or LAN, and checks the <code>Host</code> header against DNS rebinding.</li>
+</ul>
+
+<h2>Pairing</h2>
+<ul>
+<li>Each QR code pairs exactly one device and expires after 10 minutes.</li>
+<li>The computer stores only a hash of each device’s token. Remove a device any time in Settings → Remote control, and it is locked out at once.</li>
+<li>View-only links let someone watch; the computer refuses every action from them.</li>
+</ul>
+
+<h2>What the relay can and cannot see</h2>
+<table>
+<tr><th>The relay cannot</th><th>The relay can</th></tr>
+<tr><td>Read or change requests and replies: each is sealed with AES-256-GCM using a key only your computer and that device hold, bound to the device id, with a timestamp and a nonce against replays.</td><td>See IP addresses, and the size and timing of sealed messages (Cloudflare runs it).</td></tr>
+<tr><td>Store anything: it passes sealed messages along and keeps no logs.</td><td>Pass two numbers to Apple for the iPhone Live Activity (agents needing you, agents working), because the system draws it unencrypted.</td></tr>
+</table>
+
+<h2>Approving from a phone, safely</h2>
+<ul>
+<li><strong>Risky commands</strong> (<code>rm -rf</code>, force-push, <code>git reset --hard</code>, deploys, <code>sudo</code>, <code>curl | sh</code>, secrets such as <code>.env</code>) take two taps, and Face ID on the iPhone.</li>
+<li><strong>No stale taps.</strong> Each prompt carries a signature. If the agent’s question changed since you looked, your tap is refused instead of approving something else.</li>
+<li><strong>Auto-approve rules never cover risky commands</strong>, whatever the rules say.</li>
+<li><strong>Audit log.</strong> Every remote action is written to <code>~/.pilothouse/remote-audit.jsonl</code> on your computer.</li>
+</ul>
+
+<h2>What Pilothouse never touches</h2>
+<p>Your agents keep their own logins and talk to their own providers; Pilothouse doesn’t sit in between and never reads their credentials. Every flag that lets an agent act without asking (such as <code>--dangerously-skip-permissions</code>) starts off and is shown in red when on.</p>
+
+<h2>Open source</h2>
+<p>All of this is in the code: the desktop app, the relay and the iPhone app are MIT licensed on <a href="https://github.com/aemresrbyk/pilothouse">GitHub</a>. Found a problem? Please email <a href="mailto:aemresrbyk@gmail.com">aemresrbyk@gmail.com</a> before opening a public issue.</p>
+</main>
+</body>
+</html>
