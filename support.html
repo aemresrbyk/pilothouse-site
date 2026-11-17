@@ -40,6 +40,14 @@
 </ol>
 <p>No account and no Tailscale needed: the connection goes through the Pilothouse relay, end-to-end encrypted. If you use Tailscale, the iPhone app can pair over it instead (the <strong>iPhone app</strong> tab in Settings).</p>
 
+<h2 id="windows">Windows says “Windows protected your PC”</h2>
+<p>Pilothouse for Windows isn’t code-signed yet (a signing certificate costs money every year, and Pilothouse is free), so SmartScreen warns about any new app it doesn’t know. To install it:</p>
+<ol>
+<li>In the blue “Windows protected your PC” window, click <strong>More info</strong>.</li>
+<li>Check that it says <em>App: Pilothouse-Setup-x64.exe</em>, then click <strong>Run anyway</strong>.</li>
+</ol>
+<p>It asks only the first time. Download Pilothouse only from <a href="https://usepilothouse.com">usepilothouse.com</a> or the <a href="https://github.com/aemresrbyk/pilothouse/releases/latest">GitHub releases page</a>; the code that builds it is public on GitHub. The Mac version is signed and notarized by Apple, so macOS doesn’t ask.</p>
+
 <h2>“Your computer is offline” / “Cannot reach your computer”</h2>
 <ul>
   <li>The computer must be awake, with Pilothouse open and Remote control on. Settings shows “Reachable from the web” when the relay connection is up.</li>
