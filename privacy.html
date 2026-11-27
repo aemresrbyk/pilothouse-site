@@ -25,12 +25,13 @@
   .box { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; }
   .box p { margin: 0; color: var(--ink); }
 </style>
+<link rel="stylesheet" href="/fonts/fonts.css">
 </head>
 <body>
 <main>
 <a class="back" href="./"><img src="logo.svg" alt="">Pilothouse</a>
 <h1>Privacy policy</h1>
-<div class="date">Last updated: 16 November 2026 · Applies to the Pilothouse desktop app, the web app at usepilothouse.com/app, Pilothouse server and the Pilothouse iPhone app</div>
+<div class="date">Last updated: 27 November 2026 · Applies to the Pilothouse desktop app, the web app at usepilothouse.com/app, Pilothouse server and the Pilothouse iPhone app</div>
 
 <div class="box"><p><strong>In short:</strong> Pilothouse collects nothing. There is no account, no analytics, no telemetry, no advertising and no crash reporting. We, the makers, never receive your code, prompts, terminal output, voice or any information about you.</p></div>
 
@@ -47,9 +48,10 @@
   <tr><td>Two numbers: how many agents need you and how many are working (no names)</td><td>The Pilothouse relay, then Apple, to the Live Activity on your iPhone’s lock screen. The system draws it, so these two numbers cannot be encrypted.</td><td>Only while a Live Activity is running on your iPhone</td></tr>
   <tr><td>An update check (your IP address is visible to GitHub)</td><td>GitHub Releases</td><td>When the desktop app checks for updates</td></tr>
   <tr><td>A one-time download request</td><td>Hugging Face</td><td>Only if you turn on voice, to fetch the speech model</td></tr>
+  <tr><td>Your visit to this website (IP address, browser, page requested)</td><td>GitHub Pages, which hosts usepilothouse.com, under GitHub’s privacy policy. The site sets no cookies, runs no analytics and loads its fonts from this site, not from Google.</td><td>When you open usepilothouse.com</td></tr>
 </table>
 <p>Your coding agents (Claude Code, Codex, Gemini CLI and others) keep talking to their own providers exactly as they do without Pilothouse, under those providers’ policies. Pilothouse does not sit between them and does not read or use their login tokens.</p>
-<p>Tailscale, Cloudflare, Apple, the browser push services and GitHub are independent services with their own privacy policies.</p>
+<p>Tailscale, Cloudflare, Apple, the browser push services, Hugging Face and GitHub are independent services with their own privacy policies.</p>
 
 <h2>On your computer</h2>
 <p>Pilothouse keeps a log of actions taken from your phone or browser in <code>~/.pilothouse/remote-audit.jsonl</code>, on your computer only, so you can see what was approved and when. You can delete it at any time.</p>
